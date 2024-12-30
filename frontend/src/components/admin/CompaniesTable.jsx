@@ -41,6 +41,7 @@ const CompaniesTable = () => {
             axios.delete(`${COMPANY_API_END_POINT}/delete/${id}`,{
                 withCredentials:true
             })
+            
             .then(res => {
                 if (res.data.success) {
                     toast.success(res.data.message);
@@ -68,6 +69,7 @@ const CompaniesTable = () => {
                 .catch(error => {
                     console.log(error);
                 })
+                
             })
             .catch(error => {
                 console.log(error);
