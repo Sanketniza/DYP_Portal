@@ -1,0 +1,74 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+body {
+    /* background-image: linear-gradient(rgba(255, 255, 255, 0.403), rgba(255, 255, 255, 0.426)), url("https://wallpapers.com/images/high/white-brick-tiles-9lnhrfxihr5jwibi.webp"); */
+    /* background-image: linear-gradient(rgba(255, 255, 255, 0.489), rgba(255, 255, 255, 0.42)), url("https://wallpapers.com/images/high/fuzzy-white-fabric-6x247qiha278vqzx.webp"); */
+    /* background-image: linear-gradient(rgba(255, 255, 255, 0.237), rgba(255, 255, 255, 0.203)), url("https://wallpapers.com/images/high/fuzzy-white-fur-37docpbb7v7eydl1.webp"); */
+    /* background-image: linear-gradient(rgba(255, 255, 255, 0.129), rgba(255, 255, 255, 0.192)), url("https://wallpapers.com/images/hd/white-pattern-curves-architecture-z3b5moh2j7wuaoc1.webp"); */
+    /* background-image: linear-gradient(rgba(255, 255, 255, 0.466), rgba(255, 255, 255, 0.586)), url("https://wallpapers.com/images/high/fuzzy-light-blue-fur-3g55ihl97w77gqjx.webp"); */
+    /* background-image: linear-gradient(rgba(255, 255, 255, 0.46), rgba(255, 255, 255, 0.454)), url("https://wallpapers.com/images/high/fuzzy-white-fabric-6x247qiha278vqzx.webp"); */
+    /* background-image: linear-gradient(rgba(255, 255, 255, 0.563), rgba(255, 255, 255, 0.654)), url("https://wallpapers.com/images/high/white-background-pewuvg73b9yr0ict.webp"); */
+    /* background-image: linear-gradient(rgba(255, 255, 255, 0.563), rgba(255, 255, 255, 0.654)), url("https://wallpapers.com/images/high/white-background-hgbda5rsubghfb2s.webp");  */
+    /* background-image: linear-gradient(rgba(255, 255, 255, 0.563), rgba(255, 255, 255, 0.654)), url("https://wallpapers.com/images/high/red-violet-flower-white-background-2a6777d38pr0rzpj.webp");  */
+    background-image: linear-gradient(rgba(255, 255, 255, 0.186), rgba(255, 255, 255, 0.209)), url("https://wallpapers.com/images/high/white-background-q1pg7fr4r86w08da.webp");
+    background-size: cover;
+    background-position: center;
+    background-repeat: no-repeat;
+    background-attachment: fixed;
+}
+
+@layer base {
+     :root {
+        --background: 0 0% 100%;
+        --foreground: 222.2 84% 4.9%;
+        --card: 0 0% 100%;
+        --card-foreground: 222.2 84% 4.9%;
+        --popover: 0 0% 100%;
+        --popover-foreground: 222.2 84% 4.9%;
+        --primary: 222.2 47.4% 11.2%;
+        --primary-foreground: 210 40% 98%;
+        --secondary: 210 40% 96.1%;
+        --secondary-foreground: 222.2 47.4% 11.2%;
+        --muted: 210 40% 96.1%;
+        --muted-foreground: 215.4 16.3% 46.9%;
+        --accent: 210 40% 96.1%;
+        --accent-foreground: 222.2 47.4% 11.2%;
+        --destructive: 0 84.2% 60.2%;
+        --destructive-foreground: 210 40% 98%;
+        --border: 214.3 31.8% 91.4%;
+        --input: 214.3 31.8% 91.4%;
+        --ring: 222.2 84% 4.9%;
+        --radius: 0.5rem;
+    }
+    .dark {
+        --background: 222.2 84% 4.9%;
+        --foreground: 210 40% 98%;
+        --card: 222.2 84% 4.9%;
+        --card-foreground: 210 40% 98%;
+        --popover: 222.2 84% 4.9%;
+        --popover-foreground: 210 40% 98%;
+        --primary: 210 40% 98%;
+        --primary-foreground: 222.2 47.4% 11.2%;
+        --secondary: 217.2 32.6% 17.5%;
+        --secondary-foreground: 210 40% 98%;
+        --muted: 217.2 32.6% 17.5%;
+        --muted-foreground: 215 20.2% 65.1%;
+        --accent: 217.2 32.6% 17.5%;
+        --accent-foreground: 210 40% 98%;
+        --destructive: 0 62.8% 30.6%;
+        --destructive-foreground: 210 40% 98%;
+        --border: 217.2 32.6% 17.5%;
+        --input: 217.2 32.6% 17.5%;
+        --ring: 212.7 26.8% 83.9%;
+    }
+}
+
+@layer base {
+    * {
+        @apply border-border;
+    }
+    body {
+        @apply bg-background text-foreground;
+    }
+}
