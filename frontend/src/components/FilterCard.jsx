@@ -11,11 +11,11 @@ const filterData = [
     
     {
         filterType: "Location",
-        array: ["kolhapur", "pune", "Bengaluru", "Mumbai", "Hyderabad", "Delhi"]
+        array: ["Chennai", "pune", "Bengaluru", "Mumbai", "Hyderabad", "Delhi"]
     },
     {
         filterType: "Role",
-        array: ["Data Scientist", "Full Stack", "Cloud Solutions Architect" , "Software Engineer", "Programmer"] 
+        array: ["Data Scientist", "Full Stack", "Cloud Solutions Architect" , "Software Engineer", "Cloud Engineer"] 
     },
  
     {

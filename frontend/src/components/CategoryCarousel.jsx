@@ -18,7 +18,6 @@ const category = [
     "Fronted Developer",
     "Backend Developer",
     "Full Stack Developer",
-    "Data Scientist",
     "Data Analyst",
     "Machine Learning",
     "Artificial Intelligence",
