@@ -15,6 +15,7 @@ import { USER_API_END_POINT } from '@/utils/constant'
 const UpdateProfileDialog = ({ open, setOpen }) => {
     const [loading, setLoading] = useState(false);
     const { user } = useSelector(store => store.auth);
+    const dispatch = useDispatch();
 
     const [input, setInput] = useState({
         fullname: user?.fullname || "",
@@ -26,7 +27,6 @@ const UpdateProfileDialog = ({ open, setOpen }) => {
         skills: user?.profile?.skills?.map(skill => skill) || "",
         file: user?.profile?.resume || ""
     });
-    const dispatch = useDispatch();
 
     const changeEventHandler = (e) => {
         setInput({ ...input, [e.target.name]: e.target.value });

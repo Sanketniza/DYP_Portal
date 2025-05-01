@@ -19,7 +19,7 @@ function JobDescription() {
     const jobId = params.id; //* -> used to get the id of the job from the url
     
     const {singleJob} = useSelector((store) => store.job); //* -> used to get the single job from the redux store
-    const {user} = useSelector((store) => store.auth); //* -> used to get the user from the redux store
+    const {user} = useSelector((store) => store.auth); //* -> used to get the user from the redux store because we need the user id to check if the user has applied for the job or not
     
     const isIntialApplied = singleJob?.applications?.some(application => application.applicant === user?._id) || false; //* -> used to check if the user has applied for the job
     
@@ -82,7 +82,7 @@ function JobDescription() {
 
     }, [jobId , dispatch , user?._id]);
 
-    console.log(singleJob?.experienceLevel    );
+    // console.log(singleJob?.experienceLevel    );
 
     
    return (

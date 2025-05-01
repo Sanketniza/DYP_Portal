@@ -5,11 +5,11 @@ const jobSlice = createSlice({
     name: "job",
 
     initialState: {
-        allJobs: [],
-        allAdminJobs: [],
+        allJobs: [], // -> used to store the all jobs
+        allAdminJobs: [], // -> used to store the all admin jobs
         singleJob: null, //* -> used to store the single job data
-        searchJobByText: "",
-        allAppliedJobs: [],
+        searchJobByText: "", // -> used to store the searched query
+        allAppliedJobs: [], // -> used to store the all applied jobs
         searchedQuery: "", //* -> used to store the searched query
     },
 

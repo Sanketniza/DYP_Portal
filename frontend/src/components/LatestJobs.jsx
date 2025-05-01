@@ -6,10 +6,13 @@ import { motion } from 'framer-motion';
 // const randomJobs = [1, 2, 3, 4, 5, 6, 7, 8];
 
 const LatestJobs = () => {
+
     const {allJobs} = useSelector(store=>store.job);
+    console.log("all jobs are : " , allJobs);
     // todo:- from above statement we can access the allJobs from the redux store or we can say that we can access the allJobs from the job slice or the job is created in database.That all jobs are stored in the redux store. and we can access the allJobs from the redux store using the useSelector hook in this component.
    
     return (
+
         <div className='p-10 mx-auto my-20 border rounded-lg shadow shadow-2xl border-emerald-500 max-w-7xl'>
             <h1 className='text-4xl font-bold'><span className='text-[#6A38C2]'>Latest & Top </span> Job Openings</h1>
             <motion.div
@@ -24,6 +27,7 @@ const LatestJobs = () => {
                 }
             </motion.div>
         </div>
+
     )
 }
 

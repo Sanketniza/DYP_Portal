@@ -89,7 +89,7 @@ return (
 									<div className="flex items-center gap-4">
 										<NavLink to="/login"><Button variant="outline" className="">LogIn</Button></NavLink>
 										<NavLink to="/signup"><Button className="bg-red-500">Signup</Button></NavLink>
-										</div>
+									</div>
 										
 								) : (
 									<Popover >

@@ -46,4 +46,4 @@ const useGetCompanyById = (companyId) => {
     },[companyId, dispatch]) // [companyId, dispatch] means it will run only when the companyId or dispatch is changed , if you want to run the useEffect again you can pass the dependency array in the useEffect hook
 }
 
-export default useGetCompanyById
+export default useGetCompanyById;

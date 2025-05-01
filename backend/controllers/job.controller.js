@@ -116,7 +116,8 @@ export const getAdminJobs = async (req, res) => {
     } catch (error) {
         console.log(error);
     }
-}
+    
+};
 
 export const deleteJob = async (req, res) => {
     try {

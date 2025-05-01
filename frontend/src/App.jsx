@@ -19,6 +19,7 @@ import PostJob from "./components/admin/PostJob";
 import Applicants from "./components/admin/Applicants";
 import ProtectedRoute from "./components/admin/ProtectedRoute";
 import Browse from "./components/Browse";
+
 // &-----------------------------------------------------------------------------------------------
 
 const appRouter = createBrowserRouter([
