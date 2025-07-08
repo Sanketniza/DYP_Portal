@@ -17,14 +17,24 @@ app.use(express.json());
 app.use(express.urlencoded({extended:true}));
 app.use(cookieParser());
 const corsOptions = {
-    origin:'http://localhost:5173',
-    credentials:true
+    origin: process.env.NODE_ENV === 'production' 
+        ? ['https://your-frontend-domain.vercel.app', 'https://dyp-portal.vercel.app']
+        : 'http://localhost:5173',
+    credentials: true
 }
 
 app.use(cors(corsOptions));
 
 const PORT = process.env.PORT || 3000;
 
+// Health check route for Vercel
+app.get("/", (req, res) => {
+    res.json({ message: "DYP Portal Backend API is running!" });
+});
+
+app.get("/api", (req, res) => {
+    res.json({ message: "DYP Portal API is working!" });
+});
 
 // api's
 app.use("/api/v1/user", userRoute);
@@ -34,7 +44,15 @@ app.use("/api/v1/application", applicationRoute);
 
 
 
-app.listen(PORT,()=>{
+// For Vercel deployment
+if (process.env.NODE_ENV !== 'production') {
+    app.listen(PORT, () => {
+        connectDB();
+        console.log(`Server running at port ${PORT}`);
+    });
+} else {
     connectDB();
-    console.log(`Server running at port ${PORT}`);
-})
+}
+
+// Export for Vercel
+export default app;
