@@ -56,6 +56,7 @@ profile: {
     profilephoto: {
         type: String,
         default: "",
+        required: true,
       },
     company: {
         type: mongoose.SchemaTypes.ObjectId,
