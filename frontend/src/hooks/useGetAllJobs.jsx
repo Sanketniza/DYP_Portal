@@ -1,6 +1,5 @@
 import { setAllJobs } from '@/redux/jobSlice'
-import { JOB_API_END_POINT } from '@/utils/constant'
-import axios from 'axios'
+import API from '@/lib/api'
 import { useEffect } from 'react'
 import { useDispatch, useSelector } from 'react-redux'
 import { toast } from 'sonner'
@@ -25,9 +24,7 @@ const useGetAllJobs = () => {
                 // searchedQuery is used to get the data from the database which is created by the admin.
                 //@ ?keyword=${searchedQuery} is used to get the data from the database which is created by the admin. keyword is the query that is used to search the data from the database which is created by the admin.
 
-                const res = await axios.get(`${JOB_API_END_POINT}/get?keyword=${searchedQuery}`, {
-                    withCredentials:true
-                });
+                const res = await API.get(`/job/get?keyword=${searchedQuery}`);
 
                 // console.log("res.data", res.data); -> gives the data of the all jobs in the database which is created by the admin
 

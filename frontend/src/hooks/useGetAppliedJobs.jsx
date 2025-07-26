@@ -1,6 +1,5 @@
 import { setAllAppliedJobs } from "@/redux/jobSlice";
-import { APPLICATION_API_END_POINT } from "@/utils/constant";
-import axios from "axios"
+import API from '@/lib/api'
 import { useEffect } from "react"
 import { useDispatch } from "react-redux"
 import { toast } from "sonner";
@@ -20,9 +19,7 @@ const useGetAppliedJobs = () => {
                 // APPLICATION_API_END_POINT is used to get the data from the database which is created by the admin.
                 // withCredentials is used to send the cookies to the database.
 
-                const res = await axios.get(`${APPLICATION_API_END_POINT}/get`, {
-                    withCredentials:true
-                });
+                const res = await API.get('/application/get');
 
               //  console.log(res.data); // -> gives the data of the all jobs in the database which is created by the admin.
 

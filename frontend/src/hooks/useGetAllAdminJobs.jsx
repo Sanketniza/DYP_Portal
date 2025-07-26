@@ -1,6 +1,5 @@
 import { setAllAdminJobs } from '@/redux/jobSlice'
-import { JOB_API_END_POINT } from '@/utils/constant'
-import axios from 'axios'
+import API from '@/lib/api'
 import { useEffect } from 'react'
 import { useDispatch } from 'react-redux'
 
@@ -18,9 +17,7 @@ const useGetAllAdminJobs = () => {
                 //? JOB_API_END_POINT is used to get the data from the database which is created by the admin.
                 //? withCredentials is used to send the cookies to the database.
 
-                const res = await axios.get(`${JOB_API_END_POINT}/getadminjobs`,{ 
-                    withCredentials:true
-                });
+                const res = await API.get('/job/getadminjobs');
 
                 //* console.log("res.data", res.data); // -> gives the data of the all jobs in the database which is created by the admin.
 

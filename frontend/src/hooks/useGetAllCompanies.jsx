@@ -1,6 +1,5 @@
 import { setCompanies} from '@/redux/companySlice'
-import { COMPANY_API_END_POINT} from '@/utils/constant'
-import axios from 'axios'
+import API from '@/lib/api'
 import { useEffect } from 'react'
 import { useDispatch } from 'react-redux'
 import { toast } from 'sonner'
@@ -20,9 +19,7 @@ const useGetAllCompanies = () => {
                 // COMPANY_API_END_POINT is used to get the data from the database which is created by the admin.
                 // withCredentials is used to send the cookies to the database.
 
-                const res = await axios.get(`${COMPANY_API_END_POINT}/get`,{
-                    withCredentials:true
-                });
+                const res = await API.get('/company/get');
                 
                 // console.log('res.data', res.data); // -> gives the data of the all companies in the database which is created by the admin. 
 
