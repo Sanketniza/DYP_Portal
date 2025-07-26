@@ -39,7 +39,16 @@ app.use("/api/v1/application", applicationRoute);
 
 // Health check route
 app.get("/api/health", (req, res) => {
-  res.status(200).json({ status: "ok", message: "Server is healthy" });
+  res.status(200).json({ 
+    status: "ok", 
+    message: "Server is healthy",
+    environment: {
+      node_env: process.env.NODE_ENV,
+      frontend_url: process.env.FRONTEND_URL,
+      vercel_env: process.env.VERCEL_ENV,
+      region: process.env.VERCEL_REGION
+    }
+  });
 });
 
 // Export the Express app as a serverless function
