@@ -6,11 +6,10 @@ import { Label } from "../ui/label"
 import { Input } from "../ui/input"
 import { useEffect, useState } from "react"
 import { toast } from "sonner"
-import axios from "axios"
-import { COMPANY_API_END_POINT } from '@/utils/constant'
 import { useNavigate, useParams } from "react-router-dom"
 import { useSelector } from "react-redux"
 import useGetCompanyById from "@/hooks/useGetCompanyById"
+import API from '@/lib/api'
 
 {/* //*-------------------------------------------DONE----------------------------------------------- */}
 
@@ -60,11 +59,10 @@ function CompanySetup() {
 
             setLoading(true);
 
-            const res = await axios.put(`${COMPANY_API_END_POINT}/update/${params.id}`, formData, {
+            const res = await API.put(`/company/update/${params.id}`, formData, {
                 headers: {
                     'Content-Type': 'multipart/form-data'
-                },
-                withCredentials: true
+                }
             });
 
             if (res.data.success) {
@@ -96,7 +94,7 @@ function CompanySetup() {
         <>
            <Navbar/>
 
-           <div className="max-w-2xl p-10 mx-auto my-10 border rounded-lg shadow shadow-2xl border-cyan-500 sm:px-6 lg:px-8">
+           <div className="max-w-2xl p-10 mx-auto my-10 border rounded-lg shadow-2xl border-cyan-500 sm:px-6 lg:px-8">
               
 {/* //?------------------------------------------------------------------------------------------ */}
 
@@ -105,7 +103,7 @@ function CompanySetup() {
                 {/* //&------------------------------------------------------------------------------------------ */}
 
                         <div className="flex items-center gap-10 pointer-cursor ">
-                            <div className="rounded shadow shadow-xl border-5 border-zinc-800">
+                            <div className="rounded shadow-xl border-5 border-zinc-800">
                                 <Button onClick={() => navigate("/admin/companies")} variant="outline" className="flex items-center gap-1 font-semibold hover:bg-zinc-300 outline outline-offset-2 outline-1">
                                     <ArrowLeft/>
                                     <span>Back</span>
@@ -122,7 +120,7 @@ function CompanySetup() {
                             <Label className="mt-5"> Company Name </Label>
                             <Input
                                 type="text"
-                                className="w-full my-3 rounded shadow shadow-xl outline-none outline outline-offset-2 outline-1"
+                                className="w-full my-3 rounded shadow-xl outline-none outline outline-offset-2 outline-1"
                                 name="name"
                                 value={input.name}
                                 onChange={changeEventHandler}
@@ -134,7 +132,7 @@ function CompanySetup() {
                             <Label className="mt-5"> Description</Label>
                             <Input
                                 type="text"
-                                className="w-full my-3 rounded shadow shadow-xl outline outline-offset-2 outline-1 "
+                                className="w-full my-3 rounded shadow-xl outline outline-offset-2 outline-1 "
                                 name="description"
                                 value={input.description}
                                 onChange={changeEventHandler}
@@ -146,7 +144,7 @@ function CompanySetup() {
                             <Label className="mt-5"> Website </Label>
                             <Input
                                 type="text"
-                                className="w-full my-3 rounded shadow shadow-xl outline outline-offset-2 outline-1"
+                                className="w-full my-3 rounded shadow-xl outline outline-offset-2 outline-1"
                                 name="website"
                                 value={input.website}
                                 onChange={changeEventHandler}
@@ -158,7 +156,7 @@ function CompanySetup() {
                             <Label className="mt-5"> Location </Label>
                             <Input
                                 type="text"
-                                className="w-full my-3 rounded shadow shadow-xl outline outline-offset-2 outline-1"
+                                className="w-full my-3 rounded shadow-xl outline outline-offset-2 outline-1"
                                 name="location"
                                 value={input.location}
                                 onChange={changeEventHandler}
@@ -171,7 +169,7 @@ function CompanySetup() {
                             <Input
                                 type="file"
                                 accept="image/*"
-                                className="w-full my-3 rounded shadow shadow-xl outline outline-offset-2 outline-1"
+                                className="w-full my-3 rounded shadow-xl outline outline-offset-2 outline-1"
                                 onChange={changeFileHandler}
                             />
                         </div>

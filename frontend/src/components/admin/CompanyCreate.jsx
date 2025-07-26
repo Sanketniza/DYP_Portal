@@ -5,11 +5,10 @@ import { Label } from '../ui/label'
 import { Input } from '../ui/input'
 import { Button } from '../ui/button'
 import { useNavigate } from 'react-router-dom'
-import axios from 'axios'
-import { COMPANY_API_END_POINT } from '@/utils/constant'
 import { toast } from 'sonner'
 import { useDispatch } from 'react-redux'
 import { setSingleCompany } from '@/redux/companySlice'
+import API from '@/lib/api'
 
 //*------------------------------------------DONE------------------------------------------------ */
 
@@ -23,12 +22,7 @@ const CompanyCreate = () => {
 
         try {
 
-            const res = await axios.post(`${COMPANY_API_END_POINT}/register`, {companyName}, {
-                headers:{
-                    'Content-Type':'application/json'
-                },
-                withCredentials:true
-            });
+            const res = await API.post(`/company/register`, {companyName});
             
             if(res?.data?.success){
                 dispatch(setSingleCompany(res.data.company));
@@ -47,7 +41,7 @@ const CompanyCreate = () => {
         <>
             <Navbar />
             
-            <div className='max-w-4xl mx-auto border shadow shadow-2xl border-emerald-500 p-7 rounded-2xl sm:px-6 lg:px-8'>
+            <div className='max-w-4xl mx-auto border shadow-2xl border-emerald-500 p-7 rounded-2xl sm:px-6 lg:px-8'>
                 
                 <div className='my-10'>
                     <h1 className='text-4xl font-bold'>Your Company Name</h1>
@@ -57,7 +51,7 @@ const CompanyCreate = () => {
                 <Label>Company Name</Label>
                 <Input
                     type="text"
-                    className="my-2 border-2 border-orange-400 rounded shadow shadow-xl outline-none"
+                    className="my-2 border-2 border-orange-400 rounded shadow-xl outline-none"
                     placeholder="Student_Hub, Microsoft etc."
                     onChange={(e) => setCompanyName(e.target.value)}
                 />

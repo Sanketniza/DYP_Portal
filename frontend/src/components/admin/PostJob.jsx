@@ -5,11 +5,10 @@ import { Input } from '../ui/input'
 import { Button } from '../ui/button'
 import { useSelector } from 'react-redux'
 import { Select, SelectContent, SelectGroup, SelectItem, SelectTrigger, SelectValue } from '../ui/select'
-import axios from 'axios'
-import { JOB_API_END_POINT } from '@/utils/constant'
 import { toast } from 'sonner'
 import { useNavigate } from 'react-router-dom'
 import { Loader2 } from 'lucide-react'
+import API from '@/lib/api'
 
 // ^ -------------------------------------------DONE----------------------------------------------------
 // edit button -> add edit component that edit postJob data
@@ -52,12 +51,7 @@ const PostJob = () => {
         try {
             setLoading(true);
             
-            const res = await axios.post(`${JOB_API_END_POINT}/post`, input,{
-                headers:{
-                    'Content-Type':'application/json'
-                },
-                withCredentials:true
-            });
+            const res = await API.post(`/job/post`, input);
             
             if(res.data.success){
                 toast.success(res.data.message);
@@ -78,7 +72,7 @@ const PostJob = () => {
         {/*//&------------------------------------------------------------------------------------------  */}
         
             <div className="flex items-center justify-center w-screen my-5 ">
-                <form onSubmit={submitHandler} className="max-w-4xl p-8 border rounded-lg shadow shadow-2xl border-emerald-500 ">
+                <form onSubmit={submitHandler} className="max-w-4xl p-8 border rounded-lg shadow-2xl border-emerald-500 ">
                     
             {/*//?------------------------------------------------------------------------------------------  */}        
                     

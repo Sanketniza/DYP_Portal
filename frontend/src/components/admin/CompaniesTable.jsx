@@ -7,8 +7,7 @@ import { Delete, Edit2, MoreHorizontal } from 'lucide-react'
 import { useSelector } from 'react-redux'
 import { useNavigate } from 'react-router-dom'
 import { toast } from 'sonner'
-import axios from 'axios'
-import { COMPANY_API_END_POINT } from '@/utils/constant'
+import API from '@/lib/api'
 
 const CompaniesTable = () => {
     
@@ -38,9 +37,7 @@ const CompaniesTable = () => {
         
         if (isConfirm) {
             
-            axios.delete(`${COMPANY_API_END_POINT}/delete/${id}`,{
-                withCredentials:true
-            })
+            API.delete(`/company/delete/${id}`)
             
             .then(res => {
                 if (res.data.success) {
@@ -53,14 +50,10 @@ const CompaniesTable = () => {
             })
 
             // delete all jobs from this company
-            axios.get(`${COMPANY_API_END_POINT}/get/${id}/jobs`,{
-                withCredentials:true
-            })
+            API.get(`/company/get/${id}/jobs`)
             .then(res => {
                 const jobIds = res.data.jobs.map(job => job._id);
-                axios.post(`${COMPANY_API_END_POINT}/delete/jobs`, {jobIds},{
-                    withCredentials:true
-                })
+                API.post(`/company/delete/jobs`, {jobIds})
                 .then(res => {
                     if (res.data.success) {
                         toast.success('All jobs from this company have been deleted.');

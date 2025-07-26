@@ -5,8 +5,7 @@ import { Delete, Edit2, Eye, MoreHorizontal } from 'lucide-react';
 import { useSelector } from 'react-redux';
 import { useNavigate } from 'react-router-dom';
 import { toast } from 'sonner';
-import axios from 'axios';
-import { JOB_API_END_POINT } from '@/utils/constant';
+import API from '@/lib/api';
 
 // ^ ---------------------------------------------DONE--------------------------------------------------
 
@@ -33,9 +32,7 @@ const handleDelete = (id) => {
     const isConfirm = confirm("Are you sure to delete this job?");
     
     if (isConfirm) {
-        axios.delete(`${JOB_API_END_POINT}/delete/${id}`, {
-            withCredentials: true
-        })
+        API.delete(`/job/delete/${id}`)
         .then(res => {
             if (res.data.success) {
                 toast.success(res.data.message);

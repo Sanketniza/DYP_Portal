@@ -1,12 +1,11 @@
-import { useEffect } from 'react';
+import { useEffect, useCallback } from 'react';
 import Navbar from '../shared/Navbar';
 import ApplicantsTable from './ApplicantsTable';
-import axios from 'axios';
-import { APPLICATION_API_END_POINT } from '@/utils/constant';
 import { useParams } from 'react-router-dom';
 import { useDispatch, useSelector } from 'react-redux';
 import { setAllApplicants } from '@/redux/applicationSlice';
 import { toast } from 'sonner';
+import API from '@/lib/api';
 
 const Applicants = () => {
     
@@ -14,13 +13,11 @@ const Applicants = () => {
     const dispatch = useDispatch();
     const { applicants } = useSelector(store => store.application);
 
-    const fetchAllApplicants = async () => {
+    const fetchAllApplicants = useCallback(async () => {
         
         try {
             
-            const res = await axios.get(`${APPLICATION_API_END_POINT}/${params.id}/applicants`, {
-                withCredentials: true,
-            });
+            const res = await API.get(`/application/${params.id}/applicants`);
             
             dispatch(setAllApplicants(res.data.job)); // Updates the Redux state with the current applicants
         } catch (error) {
@@ -29,20 +26,18 @@ const Applicants = () => {
             console.error(error);
         }
         
-    };
+    }, [params.id, dispatch]);
 
     useEffect(() => {
         
         fetchAllApplicants(); // Fetch applicants on component load
         
-    }, []); // Empty dependency array ensures this runs only on mount
+    }, [fetchAllApplicants]); // Adding fetchAllApplicants as a dependency
 
     const handleDeleteApplicant = async (applicantId) => {
         
         try {
-            const res = await axios.delete(`${APPLICATION_API_END_POINT}/${params.id}/applicants/${applicantId}`, {
-                withCredentials: true,
-            });
+            const res = await API.delete(`/application/${params.id}/applicants/${applicantId}`);
 
             if (res.data.success) {
                 toast.success(res.data.message);
@@ -57,7 +52,7 @@ const Applicants = () => {
     return (
         <>
             <Navbar />
-            <div className="mx-auto my-[50px] max-w-7xl p-4 border border-teal-400 rounded-lg shadow shadow-2xl">
+            <div className="mx-auto my-[50px] max-w-7xl p-4 border border-teal-400 rounded-lg shadow-2xl">
                 <h1 className="my-5 text-xl font-bold">
                     Applicants ({applicants?.applications?.filter(app => app?.applicant).length || 0})
                 </h1>

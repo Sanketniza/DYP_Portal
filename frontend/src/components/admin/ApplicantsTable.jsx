@@ -116,9 +116,8 @@ import { useSelector } from "react-redux";
 import { Popover, PopoverContent, PopoverTrigger } from "../ui/popover";
 import { Table, TableBody, TableCaption, TableCell, TableHead, TableHeader, TableRow } from "../ui/table";
 import { MoreHorizontal, OctagonAlertIcon } from "lucide-react";
-import axios from "axios";
-import { APPLICATION_API_END_POINT } from '@/utils/constant';   
 import { toast } from "sonner";
+import API from '@/lib/api';
 
 const shortlistingStatus = ["Accepted", "Rejected"];
 
@@ -127,8 +126,7 @@ const ApplicantsTable = () => {
 
     const statusHandler = async (status, id) => {
         try {
-            axios.defaults.withCredentials = true;
-            const res = await axios.post(`${APPLICATION_API_END_POINT}/status/${id}/update`, { status });
+            const res = await API.post(`/application/status/${id}/update`, { status });
             if (res.data.success) {
                 toast.success(res.data.message);
             }
