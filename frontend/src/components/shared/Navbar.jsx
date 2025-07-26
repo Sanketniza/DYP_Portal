@@ -11,7 +11,7 @@ import { useDispatch, useSelector } from "react-redux";
 import axios from "axios";
 import { setUser } from "@/redux/authSlice";
 import { toast } from "sonner";
-import { USER_API_END_POINT } from "@/utils/constant";
+import API from "@/lib/api";
 import logo from "@/assets/logo.png";
 
 function Navbar() {
@@ -25,9 +25,7 @@ function Navbar() {
 
 		try{
 			//* --> This is used to logout the user.
-			const res = await axios.get(`${USER_API_END_POINT}/logout` , {
-				withCredentials: true
-			});
+			const res = await API.get('/user/logout');
 
 				if(res.data.success) {
 					dispatch(setUser(null));
@@ -100,7 +98,7 @@ return (
 												alt="User Profile photo"/>
 										</Avatar>
 									</PopoverTrigger>
-                                    
+									
 									<PopoverContent className="max-w-xs p-4 mt-2 border rounded shadow shadow-2xl border-emerald-500 ">
 										
 										{/* //&------------------------------------------------------------------------------------------  */}
@@ -172,28 +170,28 @@ export default Navbar;
 
 
 	
-  	^ When to Use Link
-  	 --> Simple Navigation:
-  	 Use Link when you want to create a straightforward navigation link to another route in your application. It is ideal for navigation menus, buttons, or any clickable text that should lead to a different page.
+	^ When to Use Link
+	 --> Simple Navigation:
+	 Use Link when you want to create a straightforward navigation link to another route in your application. It is ideal for navigation menus, buttons, or any clickable text that should lead to a different page.
 
-  	 --> Preserving SPA Behavior:
-  	 Link automatically prevents the default browser behavior of reloading the page, ensuring that navigation remains within the single-page application (SPA) context. This provides a smoother user experience.
+	 --> Preserving SPA Behavior:
+	 Link automatically prevents the default browser behavior of reloading the page, ensuring that navigation remains within the single-page application (SPA) context. This provides a smoother user experience.
 
-  	 --> Accessibility:
-  	 Link is inherently accessible, as it behaves like a standard anchor tag. It is focusable and can be navigated using the keyboard, making it a good choice for links.
+	 --> Accessibility:
+	 Link is inherently accessible, as it behaves like a standard anchor tag. It is focusable and can be navigated using the keyboard, making it a good choice for links.
 	
-  	 --> Styling:
-  	 You can style Link components just like any other React component, allowing for consistent design across your application.
+	 --> Styling:
+	 You can style Link components just like any other React component, allowing for consistent design across your application.
 
-  	 ^ When to Use Navigate
-  	  --> Programmatic Navigation:
-  	 Use Navigate when you need to redirect users programmatically, such as after a form submission, authentication, or when certain conditions are met.
+	 ^ When to Use Navigate
+	  --> Programmatic Navigation:
+	 Use Navigate when you need to redirect users programmatically, such as after a form submission, authentication, or when certain conditions are met.
 
-  	 --> Conditional Rendering:
-  	 Navigate is useful for conditionally rendering a redirect based on application state. For example, if a user tries to access a protected route without being authenticated, you can redirect them to the login page.
+	 --> Conditional Rendering:
+	 Navigate is useful for conditionally rendering a redirect based on application state. For example, if a user tries to access a protected route without being authenticated, you can redirect them to the login page.
 
-  	 --> Replacing History:
-  	 Navigate can replace the current entry in the history stack, which is useful when you don’t want users to navigate back to the previous page after a redirect (e.g., after logging in).
+	 --> Replacing History:
+	 Navigate can replace the current entry in the history stack, which is useful when you don’t want users to navigate back to the previous page after a redirect (e.g., after logging in).
   
 
 */
