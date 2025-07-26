@@ -7,7 +7,7 @@ import { RadioGroup } from '../ui/radio-group'
 import { Button } from '../ui/button'
 import { Link, useNavigate } from 'react-router-dom'
 import axios from 'axios'
-import { USER_API_END_POINT } from '@/utils/constant'
+import API from '@/lib/api'
 import { toast } from 'sonner'
 import { useDispatch, useSelector } from 'react-redux'
 import { setLoading } from '@/redux/authSlice'
@@ -59,13 +59,10 @@ const Signup = () => {
             
             dispatch(setLoading(true));
             
-            const res = await axios.post(`${USER_API_END_POINT}/register`, formData, {
+            const res = await API.post('/user/register', formData, {
                 headers: { 
                     'Content-Type': "multipart/form-data"
-                },
-                 
-                withCredentials: true,
-                
+                }
             });
             
             if (res.data.success) {

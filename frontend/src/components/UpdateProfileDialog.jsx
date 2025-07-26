@@ -9,7 +9,7 @@ import { useDispatch, useSelector } from 'react-redux'
 import axios from 'axios'
 import { setUser } from '@/redux/authSlice'
 import { toast } from 'sonner'
-import { USER_API_END_POINT } from '@/utils/constant'
+import API from '@/lib/api'
 
 
 const UpdateProfileDialog = ({ open, setOpen }) => {
@@ -52,11 +52,10 @@ const UpdateProfileDialog = ({ open, setOpen }) => {
         }
         try {
             setLoading(true);
-            const res = await axios.post(`${USER_API_END_POINT}/profile/update`, formData, {
+            const res = await API.post('/user/profile/update', formData, {
                 headers: {
                     'Content-Type': 'multipart/form-data'
-                },
-                withCredentials: true
+                }
             });
             if (res.data.success) {
                 dispatch(setUser(res.data.user));
