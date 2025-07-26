@@ -7,7 +7,7 @@ import { useEffect, useState } from "react";
 import axios from "axios";
 import { setSingleJob } from "@/redux/jobSlice";
 import { toast } from "sonner";
-import { APPLICATION_API_END_POINT, JOB_API_END_POINT } from "@/utils/constant";
+import API from "@/lib/api";
 
 //* -------------------------------------------DONE--------------------------------------------
 
@@ -30,9 +30,7 @@ function JobDescription() {
 
         try {
 
-            const res = await axios.get(`${APPLICATION_API_END_POINT}/apply/${jobId} ` , {
-                withCredentials: true 
-            });
+            const res = await API.get(`/application/apply/${jobId}`);
 
             console.log("res.data", res.data); // it's give the response of the job application . for example : {success: true, message: 'Application submitted successfully'}
 
@@ -56,9 +54,7 @@ function JobDescription() {
         const fetchSingleJob = async () => {
 
             try{
-                const res = await axios.get(`${JOB_API_END_POINT}/get/${jobId}` , {
-                    withCredentials: true
-                });
+                const res = await API.get(`/job/get/${jobId}`);
 
                      // console.log("res.data", res.data); 
                //* --> it's give the response of the job data. for example : {success: true, job: {_id: '666666666666666666666666', title: 'Software Engineer', position: 'Full Stack Developer', jobType: 'Full Time', salary: 100000, description: 'Lorem ipsum dolor sit amet consectetur adipisicing elit. Quisquam, quos.', experience: 2, createdAt: '2024-05-01T12:00:00.000Z', applications: []}}
