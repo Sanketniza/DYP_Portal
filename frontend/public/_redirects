@@ -1,0 +1,5 @@
+# This file will be ignored by Vercel
+# API Redirects
+/api/*  /.netlify/functions/api/:splat  200!
+# SPA fallback
+/*    /index.html   200
