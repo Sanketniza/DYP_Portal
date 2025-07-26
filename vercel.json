@@ -9,7 +9,8 @@
             "src": "frontend/package.json",
             "use": "@vercel/static-build",
             "config": {
-                "distDir": "dist"
+                "distDir": "dist",
+                "buildCommand": "npm run build"
             }
         }
     ],
@@ -28,8 +29,12 @@
             "handle": "filesystem"
         },
         {
-            "src": "/api/v1/(.*)",
+            "src": "/api/(.*)",
             "dest": "/backend/index.js"
+        },
+        {
+            "src": "/(.*\\.(js|css|ico|png|jpg|jpeg|svg|json))",
+            "dest": "/frontend/dist/$1"
         },
         {
             "src": "/(.*)",
